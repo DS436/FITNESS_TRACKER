@@ -1,0 +1,56 @@
+/* Styles for header */
+header {
+    background-color: #333; /* Dark gray background */
+    color: #fff; /* White text color */
+    padding: 10px; /* Add some padding */
+    text-align: center; /* Center-align text */
+}
+
+header h1 {
+    margin: 0; /* Remove default margin */
+}
+
+/* Styles for main content */
+main {
+    padding: 20px; /* Add padding around main content */
+}
+
+.dashboard {
+    border: 1px solid #ccc; /* Add border around dashboard */
+    padding: 20px; /* Add padding */
+    margin-bottom: 20px; /* Add some space below dashboard */
+}
+
+/* Styles for forms */
+form {
+    margin-bottom: 20px; /* Add some space below forms */
+}
+
+form input[type="text"],
+form input[type="number"],
+form textarea {
+    width: 100%; /* Make input fields fill the entire width */
+    padding: 10px; /* Add padding */
+    margin-bottom: 10px; /* Add some space below input fields */
+}
+
+form button {
+    background-color: #007bff; /* Blue button background */
+    color: #fff; /* White text color */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Add padding */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+form button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Styles for footer */
+footer {
+    background-color: #333; /* Dark gray background */
+    color: #fff; /* White text color */
+    padding: 10px; /* Add some padding */
+    text-align: center; /* Center-align text */
+}
+
