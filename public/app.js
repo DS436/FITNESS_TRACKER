@@ -1,15 +1,6 @@
 window.onload = function () {
-    loadUserData();
     loadChartData();
 };
-
-function loadUserData() {
-    fetch('/get-user-info')
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('username').textContent = data.username;
-        });
-}
 
 function loadChartData() {
     fetch('/get-exercise-data')
@@ -19,7 +10,7 @@ function loadChartData() {
                 animationEnabled: true,
                 theme: "light2",
                 title: {
-                    text: "Your Weekly Exercise Duration"
+                    text: "Your Exercise Duration"
                 },
                 axisY: {
                     title: "Duration in Minutes",
@@ -31,5 +22,17 @@ function loadChartData() {
                 }]
             });
             chart.render();
+
+            updateExerciseList(data);  // Update the list/table of data
         });
+}
+
+function updateExerciseList(data) {
+    const listContainer = document.createElement('ul');
+    data.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `Date: ${item.label}, Duration: ${item.y} minutes`;
+        listContainer.appendChild(listItem);
+    });
+    document.body.appendChild(listContainer);
 }
