@@ -8,6 +8,13 @@
 </head>
 <body>
     <h1>Fitness Tracker</h1>
+    <form action="/submit-exercise" method="POST">
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+        <label for="duration">Exercise Duration (minutes):</label>
+        <input type="number" id="duration" name="duration" required>
+        <button type="submit">Submit</button>
+    </form>
     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script src="app.js"></script>
