@@ -1,0 +1,28 @@
+{
+  "name": "fitness-tracker",
+  "version": "1.0.0",
+  "description": "fitness tracker",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Running tests..\" ",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DS436/FITNESS_TRACKER.git"
+  },
+  "keywords": [
+    "FITNESS",
+    "TRACKER"
+  ],
+  "author": "Devansh Sharma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DS436/FITNESS_TRACKER/issues"
+  },
+  "homepage": "https://github.com/DS436/FITNESS_TRACKER#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {}
+}
