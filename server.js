@@ -38,6 +38,19 @@ app.get('/get-exercise-data', (req, res) => {
     }
 });
 
+app.post('/submit-exercise', (req, res) => {
+    if (req.session.loggedIn) {
+        const { date, duration } = req.body;
+        const data = { date, duration };
+        // Append data to a json file (simulate a database)
+        fs.appendFileSync('data.json', JSON.stringify(data) + '\n', 'utf8');
+        res.redirect('/');  // Redirect to the main page after submitting
+    } else {
+        res.redirect('/login');
+    }
+});
+
+
 // Remaining routes and middleware...
 
 app.listen(PORT, () => {
