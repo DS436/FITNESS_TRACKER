@@ -6,12 +6,10 @@ const fs = require('fs');
 const app = express();
 const PORT = 3000;
 
-// Middleware
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({ secret: 'fitness tracker secret', resave: false, saveUninitialized: true }));
 
-// Routes
 app.get('/', (req, res) => {
     if (req.session.loggedIn) {
         res.sendFile(__dirname + '/public/index.html');
@@ -20,32 +18,27 @@ app.get('/', (req, res) => {
     }
 });
 
-app.get('/login', (req, res) => {
-    res.sendFile(__dirname + '/public/login.html');
-});
-
-app.post('/login', (req, res) => {
-    const { username, password } = req.body;
-    // Simple authentication logic (replace with database lookup in production)
-    if (username === "user" && password === "pass") {
-        req.session.loggedIn = true;
-        res.redirect('/');
-    } else {
-        res.send('Invalid username or password');
-    }
-});
-
-app.post('/submit-exercise', (req, res) => {
+app.get('/get-user-info', (req, res) => {
     if (req.session.loggedIn) {
-        const { date, duration } = req.body;
-        const data = { date, duration };
-        // Append data to a json file (simulate a database)
-        fs.appendFileSync('data.json', JSON.stringify(data) + '\n');
-        res.redirect('/');
+        res.json({ username: req.session.username }); // Assuming username is stored in session
     } else {
-        res.redirect('/login');
+        res.status(401).send('Unauthorized');
     }
 });
+
+app.get('/get-exercise-data', (req, res) => {
+    if (req.session.loggedIn) {
+        // Read the exercise data from file and send it
+        const rawData = fs.readFileSync('data.json', 'utf8');
+        const dataPoints = rawData.trim().split('\n').map(line => JSON.parse(line));
+        const formattedData = dataPoints.map(item => ({ label: item.date, y: parseInt(item.duration) }));
+        res.json(formattedData);
+    } else {
+        res.status(401).send('Unauthorized');
+    }
+});
+
+// Remaining routes and middleware...
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
