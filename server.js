@@ -26,6 +26,11 @@ app.get('/get-user-info', (req, res) => {
     }
 });
 
+app.get('/login', (req, res) => {
+    res.sendFile(__dirname + '/public/login.html');
+});
+
+
 app.get('/get-exercise-data', (req, res) => {
     if (req.session.loggedIn) {
         // Read the exercise data from file and send it
