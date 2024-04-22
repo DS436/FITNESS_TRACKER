@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/DS436/FITNESS_TRACKER#readme",
   "dependencies": {
-    "express": "^4.19.2"
-  },
-  "devDependencies": {}
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0"
+  }
 }
